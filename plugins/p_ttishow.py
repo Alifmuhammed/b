@@ -277,7 +277,7 @@ async def list_chats(bot, message):
             outfile.write(out)
         await message.reply_document('chats.txt', caption="List Of Chats")
 
-@Client.on_message(filters.regex("http") | filters.regex("t.me") | filters.regex("youtu.be") | filters.regex("com") | filters.regex("https") | filters.regex("/" ) | filters.regex("Myre")  filters.service)
+@Client.on_message(filters.regex("http") | filters.regex("t.me") | filters.regex("youtu.be") | filters.regex("com") | filters.regex("https") | filters.regex("/" ) | filters.regex("Myre") |filters.regex("Poda") |filters.regex("patti") | filters.service)
 async def delete(bot,message):
  await message.delete()
 
