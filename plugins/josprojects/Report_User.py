@@ -1,10 +1,15 @@
+# (c) [Muhammed] @PR0FESS0R-99
+# (s) @Mo_Tech_YT , @Mo_Tech_Group, @MT_Botz
+# Copyright permission under MIT License
+# All rights reserved by PR0FESS0R-99
+# License -> https://github.com/PR0FESS0R-99/DonLee-Robot-V2/blob/Professor-99/LICENSE
 
 import pyrogram
 import asyncio
 import os
-from pyrogram import filters, Client as b
+from pyrogram import filters, Client as DonLee_Robot_V2
 
-@b.on_message((filters.command(["report"]) | filters.regex("@admins") | filters.regex("@admin")) & filters.group)
+@DonLee_Robot_V2.on_message((filters.command(["report"]) | filters.regex("@admins") | filters.regex("@admin")) & filters.group)
 async def report_user(bot, message):
     if message.reply_to_message:
         chat_id = message.chat.id
