@@ -254,3 +254,80 @@ async def delete_all_index_confirm(bot, message):
     await message.answer()
     await message.message.edit('Succesfully Deleted All The Indexed Files.')
 
+
+@Client.on_message(filters.command('batch') & filters.private & filters.incoming)
+async def batch(c, m):
+    """ Tʜɪs ɪs ғᴏʀ ʙᴀᴛᴄʜ ᴄᴏᴍᴍᴀɴᴅ"""
+    if IS_PRIVATE:
+        if m.from_user.id not in AUTH_USERS:
+            return
+    BATCH.append(m.from_user.id)
+    files = []
+    i = 1
+
+    while m.from_user.id in BATCH:
+        if i == 1:
+            media = await c.ask(chat_id=m.from_user.id, text='Sᴇɴᴅ ᴍᴇ sᴏᴍᴇ ғɪʟᴇs ᴏʀ ᴠɪᴅᴇᴏs ᴏʀ ᴘʜᴏᴛᴏs ᴏʀ ᴛᴇxᴛ ᴏʀ ᴀᴜᴅɪᴏ. Iғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄᴀɴᴄᴇʟ ᴛʜᴇ ᴘʀᴏᴄᴇss sᴇɴᴅ /cancel')
+            if media.text == "/cancel":
+                return await m.reply_text('Cᴀɴᴄᴇʟʟᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✌')
+            files.append(media)
+        else:
+            try:
+                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('Dᴏɴᴇ ✅', callback_data='done')]])
+                media = await c.ask(chat_id=m.from_user.id, text='Oᴋ 😉. Nᴏᴡ sᴇɴᴅ ᴍᴇ sᴏᴍᴇ ᴍᴏʀᴇ ғɪʟᴇs Oʀ ᴘʀᴇss ᴅᴏɴᴇ ᴛᴏ ɢᴇᴛ sʜᴀʀᴇᴀʙʟᴇ ʟɪɴᴋ. Iғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴄᴀɴᴄᴇʟ ᴛʜᴇ ᴘʀᴏᴄᴇss sᴇɴᴅ/cancel', reply_markup=reply_markup)
+                if media.text == "/cancel":
+                    return await m.reply_text('Cᴀɴᴄᴇʟʟᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ ✌')
+                files.append(media)
+            except ListenerCanceled:
+                pass
+            except Exception as e:
+                print(e)
+                await m.reply_text(text="Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. Tʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ.")
+        i += 1
+
+    message = await m.reply_text("Gᴇɴᴇʀᴀᴛɪɴɢ sʜᴀʀᴇᴀʙʟᴇ ʟɪɴᴋ 🔗")
+    string = ""
+    for file in files:
+        if DB_CHANNEL_ID:
+            copy_message = await file.copy(int(DB_CHANNEL_ID))
+        else:
+            copy_message = await file.copy(m.from_user.id)
+        string += f"{copy_message.message_id}-"
+        await asyncio.sleep(1)
+
+    string_base64 = await encode_string(string[:-1])
+    send = await c.send_message(m.from_user.id, string_base64) if not DB_CHANNEL_ID else await c.send_message(int(DB_CHANNEL_ID), string_base64)
+    base64_string = await encode_string(f"batch_{m.chat.id}_{send.message_id}")
+    bot = await c.get_me()
+    url = f"https://t.me/{bot.username}?start={base64_string}"
+
+    await message.edit(text=url)
+
+@Client.on_message(filters.command('mode') & filters.incoming & filters.private)
+async def set_mode(c,m):
+    if IS_PRIVATE:
+        if m.from_user.id not in AUTH_USERS:
+            return
+    usr = m.from_user.id
+    if len(m.command) > 1:
+        usr = m.command[1]
+    caption_mode = (await get_data(usr)).up_name
+    if caption_mode:
+       await update_as_name(str(usr), False)
+       text = "Uᴘʟᴏᴀᴅᴇʀ Dᴇᴛᴀɪʟs ɪɴ Cᴀᴘᴛɪᴏɴ: **Dɪsᴀʙʟᴇᴅ ❌**"
+    else:
+       await update_as_name(str(usr), True)
+       text = "Uᴘʟᴏᴀᴅᴇʀ Dᴇᴛᴀɪʟs ɪɴ Cᴀᴘᴛɪᴏɴ: **Eɴᴀʙʟᴇᴅ ✔️**"
+    await m.reply_text(text, quote=True)
+
+async def decode(base64_string):
+    base64_bytes = base64_string.encode("ascii")
+    string_bytes = base64.b64decode(base64_bytes) 
+    string = string_bytes.decode("ascii")
+    return string
+
+async def encode_string(string):
+    string_bytes = string.encode("ascii")
+    base64_bytes = base64.b64encode(string_bytes)
+    base64_string = base64_bytes.decode("ascii")
+    return base64_string
