@@ -706,10 +706,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query_data == "help_me":
-        await update.answer("Do not add the word MOVIE with your movie name 😉.\nദയവ് ചെയ്ത് സിനിമയുടെ പേരിന്റെ കൂടെ Movie എന്ന വാക്ക് ഇടരുത് 😝.", show_alert=True)
-
-       )
     elif query.data == "music":
         buttons = [[
             InlineKeyboardButton('« Back', callback_data='help')
@@ -719,7 +715,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=Script.MUSIC_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
-            parse_mode='html''
+            parse_mode='html'
         )
     elif query.data == "genpassword":
         buttons = [[
@@ -930,12 +926,9 @@ async def advantage_spell_chok(msg):
             [
                  InlineKeyboardButton("🕵️‍♂️ Search On Google 🕵️‍♂️", url=f"https://google.com/search?q={search}")
             ]
-                 InlineKeyboardButton("🥺Help me", callback_data='help_me'
-            [
-
-            ]
+        ]
     )
-        k = await msg.reply(f"Hey, {msg.from_user.mention}!.. Your word <b>{search}</b> is No Movie or Series Related to the Given Word Was Found 🥺\n\n<s>Please Go to Google and Confirm the Correct Spelling 🥺🙏</s>", reply_markup=hmm)
+        k = await msg.reply(f"Hey, {msg.from_user.mention}!.. Your word <b>{search}</b> is No Movie/Series Related to the Given Word Was Found 🥺\n\n<s>Please Go to Google and Confirm the Correct Spelling 🥺🙏</s>", reply_markup=hmm)
         await asyncio.sleep(60)
         await k.delete()
         return
