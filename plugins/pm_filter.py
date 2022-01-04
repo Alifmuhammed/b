@@ -709,7 +709,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query_data == "help_me":
         await update.answer("Do not add the word MOVIE with your movie name 😉.\nദയവ് ചെയ്ത് സിനിമയുടെ പേരിന്റെ കൂടെ Movie എന്ന വാക്ക് ഇടരുത് 😝.", show_alert=True)
 
-        )
+       )
     elif query.data == "music":
         buttons = [[
             InlineKeyboardButton('« Back', callback_data='help')
@@ -719,7 +719,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=Script.MUSIC_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
-            parse_mode='html'
+            parse_mode='html''
         )
     elif query.data == "genpassword":
         buttons = [[
