@@ -38,17 +38,17 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, Script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('Add me to your Chat', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('💣 𝗮𝗱𝗱 𝗺𝗲 𝘁𝗼 𝘆𝗼𝘂𝗿 𝗰𝗵𝗮𝘁 💣', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('help', callback_data='help'),
-            InlineKeyboardButton('about', callback_data='about')
+            InlineKeyboardButton('🤓 𝗵𝗲𝗹𝗽 🤓', callback_data='help'),
+            InlineKeyboardButton('😎 𝗺𝗲 😎', callback_data='about')
             ],[
-            InlineKeyboardButton('search here movie', switch_inline_query_current_chat='')
+            InlineKeyboardButton('🔎 𝘀𝗲𝗮𝗿𝗰𝗵', switch_inline_query_current_chat='')
             ],[
-            InlineKeyboardButton('updates', url='https://t.me/josprojects'),
-            InlineKeyboardButton('movie club', url='https://t.me/+y53tWFUw6Q43NzE9')
+            InlineKeyboardButton('👨‍💻 𝗱𝗲𝘃 👨‍💻', url='https://t.me/Alifmuhammad_tg'),
+            InlineKeyboardButton('🕴️ 𝗺𝘆 𝗴𝗿𝗽 🕴️', url='https://t.me/Cinemachanda')
             ],[
-            InlineKeyboardButton('✗ Close the Menu ✗', callback_data='close_data')
+            InlineKeyboardButton('🤐 𝗰𝗹𝗼𝘀𝗲 🤐', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -85,12 +85,12 @@ async def start(client, message):
         return
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('Add me to your Chat', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('💣 𝗮𝗱𝗱 𝗺𝗲 𝘁𝗼 𝘆𝗼𝘂𝗿 𝗰𝗵𝗮𝘁 💣', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('help', callback_data='help'),
-            InlineKeyboardButton('about', callback_data='about')
+            InlineKeyboardButton('𝗵𝗲𝗹𝗽', callback_data='help'),
+            InlineKeyboardButton('😎 𝗺𝗲 😎', callback_data='about')
             ],[
-            InlineKeyboardButton('search here movie', switch_inline_query_current_chat='')
+            InlineKeyboardButton('🔎 𝘀𝗲𝗮𝗿𝗰𝗵', switch_inline_query_current_chat='')
             ],[
             InlineKeyboardButton('updates', url='https://t.me/josprojects'),
             InlineKeyboardButton('movie club', url='https://t.me/+y53tWFUw6Q43NzE9')
