@@ -1,30 +1,30 @@
 class Script(object):
     START_TXT = """Hello {},
 
-My name is <a href=https://t.me/{}>{}</a>!
-
-<b>I can provide Movies. A Telegram Auto Filter Bot. Its Easy To Use Me :)
-
-Just Add me to Your Group As Admin, Hit The Help Button For More Info..</b>"""
+<i>My name is <a href=https://t.me/{}>mohalal</a>!
+𝙸 𝙰𝚖 𝙰 𝙿𝚛𝚎 𝙵𝚞𝚗𝚌𝚝𝚒𝚘𝚗𝚎𝚍 𝚁𝚘𝚋𝚘𝚝
+Add Me To Your Groups and see my pever 🔥🔥
+hit /help see my commands 🧑‍💻</i>
+"""
 
     HELP_TXT = """Hey {}
 
 <b>Here Is The Help For My Commands.</b>"""
 
     ABOUT_TXT = """<b>➥ My name: {}
-➥ Creator: Zaute Km
+➥ Creator: <a href='https://t.me/Alifmuhammad_tg'>Alif</a>
 ➥ Library: Pyrogram
 ➥ Language: Python 𝟹
 ➥ Data Base: MongoDB
-➥ Bot Server: Railway/Heroku
+➥ Bot Server: Heroku
 ➥ Build Status: v1.0.1 [ Beta ]"""
 
     SOURCE_TXT = """<b>Source:</b>
-IMDb is a Open source project.
+Mohalal is a closed source project.
 Source: <a href='https://github.com/josprojects/tgmoviebot'>GitHub - Click here 👈</a>
 
 <b>DEVS:</b>
-- <a href='https://t.me/josprojects'>Jos Projects</a>
+- <a href='https://t.me/Alifmuhammad_tg'>Alif</a>
 
 <b>SUPPORT GROUP</b>
 - <a href='https://t.me/+y53tWFUw6Q43NzE9'>Jos Movie Club</a>"""
@@ -46,7 +46,7 @@ Source: <a href='https://github.com/josprojects/tgmoviebot'>GitHub - Click here 
 
     BUTTON_TXT = """Help: <b>Buttons</b>
 
-- tgmoviebot support both url and alert inline buttons.
+- Mohalal support both url and alert inline buttons.
 
 <b>NOTE:</b>
 1. Telegram will not allows you to send buttons without any content, so content is mandatory.
@@ -54,7 +54,7 @@ Source: <a href='https://github.com/josprojects/tgmoviebot'>GitHub - Click here 
 3. Buttons should be properly parsed as markdown format.
 
 <b>URL buttons:</b>
-<code>[Button Text](buttonurl:https://t.me/josprojects)</code>
+<code>[Button Text](buttonurl:https://t.me/Alifmuhammad_tg)</code>
 
 <b>Alert buttons:</b>
 <code>[Button Text](buttonalert:This is an alert message)</code>"""
