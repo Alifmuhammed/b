@@ -6,6 +6,7 @@ marshmallow==3.14.1
 umongo==3.0.1
 telegraph==1.4.1
 googletrans==3.1.0a0
+countryinfo
 gTTS
 asyncio==3.4.3
 aiohttp==3.7.4
