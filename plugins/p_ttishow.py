@@ -44,20 +44,6 @@ async def save_group(bot, message):
         await message.reply_text(
             text=f"<b>Thankyou For Adding Me In {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
             reply_markup=reply_markup)
-    else:
-        for u in message.new_chat_members:
-            zaute = [[
-            InlineKeyboardButton('👉 ⚠️ Press me... 🥰 👈', url="https://t.me/josprojects")
-        ]]
-            if (temp.MELCOW).get('welcome') is not None:
-                try:
-                    await (temp.MELCOW['welcome']).delete()
-                except:
-                    pass
-            temp.MELCOW['welcome'] = await message.reply_text(
-            text=f"<b>👋 Hi! {u.mention},</b> Welcome to <b>{message.chat.title}</b>\n\n<b>👇 Official Projects Channels 👇</b>",
-            disable_web_page_preview = True,
-            reply_markup=InlineKeyboardMarkup(zaute))
 
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))
