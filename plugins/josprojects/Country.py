@@ -7,8 +7,8 @@
 import random
 from countryinfo import CountryInfo
 from pyrogram import filters, Client as DonLee_Robot_V2
-from DonLee_Robot_V2.Config_Vars.H_Vars import BUTTONS
-from DonLee_Robot_V2 import Config, Import 
+from plugins.josprojects.help_func.H_Vars import BUTTONS
+from plugins import Config, Import 
 
 @DonLee_Robot_V2.on_message(filters.command(["country"]))
 async def country_info(bot, update: Import.Msg):
