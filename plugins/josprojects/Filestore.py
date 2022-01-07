@@ -1,6 +1,6 @@
 import os
 import urllib
-from .commands import encode_string
+from .plugins.josprojects.commands import encode_string
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import *
